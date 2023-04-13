@@ -1,0 +1,47 @@
+<div>
+  <div class="col-lg-3">
+    <div class="well">
+      <div class="Calculator">
+        <div>
+          <h5>
+            Loan EMI
+          </h5>
+          <span class="result">
+            {{result.emi || "--"}}
+          </span>
+        </div>
+        <div>
+          <h5>
+            Total Interest Payable
+          </h5>
+          <span class="result">
+            {{result.interest || "--"}}
+          </span>
+        </div>
+        <div>
+          <h5>
+            Total Loan Amount
+          </h5>
+          <span class="result">
+            {{result.loanAmt || "--"}}
+          </span>
+        </div>
+        <div>
+          <h5>
+            Total Payment
+          </h5>
+          <h6>
+            (Principal + Interest)
+          </h6>
+          <span class="result">
+            {{result.total || "--"}}
+          </span>
+        </div>
+      </div>
+    
+      <div class="chart-container">
+        <app-pie-chart></app-pie-chart>
+      </div>
+    </div>
+  </div>
+</div>

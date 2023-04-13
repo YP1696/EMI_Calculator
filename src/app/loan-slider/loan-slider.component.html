@@ -1,0 +1,65 @@
+<div class="container">
+  <mat-card class="spacer">
+    <div class="row" style="display: flex;">
+      <div class="well">
+        <b>
+          <ul>EMI CALCULATOR</ul>
+        </b>
+        <div class="form-group">
+          <div class="col-md-12">
+            <span class="left-title">
+              Home Loan Amount
+            </span>
+            <input matInput type="text" class="form-control" (blur)="tbupdate(0)" [(ngModel)]="query.amount"
+              placeholder="Loan Amount" name="pemi.highValue" />
+          </div>
+          <ngx-slider [(value)]="principal_emi.value" (click)="sendResult()" [options]="poptions"
+            (userChangeEnd)="update()">
+          </ngx-slider>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <span class="left-title">
+              Interest Rate
+            </span>
+            <input type="text" style="width:44%;float:right;" class="form-control" (blur)="tbupdate(1)"
+              [(ngModel)]="query.interest" placeholder="Interest Rate" name="rate.highValue" />
+          </div>
+          <ngx-slider [(value)]="rate.value" [options]="roptions" (click)="sendResult()" (userChangeEnd)="update()">
+          </ngx-slider>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+          <div class="col-md-10">
+            <span class="left-title">Loan Tenure</span>
+            <input type="text" *ngIf="yrToggel" class="form-control" (blur)="tbupdate(2)"
+              placeholder="Loan Tenure in Yr" [(ngModel)]="query.tenureYr" style="width:30%;float:right;">
+            <input type="text" *ngIf="!yrToggel" class="form-control" (blur)="tbupdate(3)"
+              placeholder="Loan Tenure in Mo" [(ngModel)]="query.tenureMo" style="width:30%;float:right;">
+          </div>
+          <div class="col-md-2">
+            <div class="input-group-append">
+              <button mat-raised-button color="primary" class="btn btn-outline-secondary"
+                [ngClass]="{'active':yrToggel}" (click)="yrToggel=true;update()" type="button">Yr</button>
+              <button mat-raised-button color="primary" class="btn btn-outline-secondary"
+                [ngClass]="{'active':!yrToggel}" (click)="yrToggel=false;update()" type="button">Mo</button>
+            </div>
+          </div>
+          <ngx-slider *ngIf="yrToggel" [(value)]="tenur.value" (click)="sendResult()" [options]="toptions" (userChangeEnd)="update()">
+          </ngx-slider>
+          <ngx-slider *ngIf="!yrToggel" [(value)]="month.value" (click)="sendResult()" [options]="moptions" (userChangeEnd)="update()">
+          </ngx-slider>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="calculator">
+      <app-loan-calculator></app-loan-calculator>
+    </div>
+  </mat-card>
+</div>
